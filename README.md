@@ -1,1 +1,1 @@
-# otus-python-basic
+# Репозиторий для выполнения ДЗ по курсу OTUS python.basic
