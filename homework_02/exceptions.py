@@ -7,8 +7,7 @@
 
 
 class LowFuelError(Exception):
-    def __init__(self, text):
-        super.__init__()
+    pass
 
 
 class NotEnoughFuel(Exception):
