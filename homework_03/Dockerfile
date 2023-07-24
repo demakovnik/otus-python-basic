@@ -2,7 +2,7 @@ FROM python:3.9-buster
 
 WORKDIR /app
 
-RUN pip install --upgrade pip setuptools "poetry-1.5.1"
+RUN pip install --upgrade pip setuptools "poetry==1.5.1"
 RUN poetry config virtualenvs.create false
 COPY pyproject.toml poetry.lock ./
 RUN poetry install --only main
