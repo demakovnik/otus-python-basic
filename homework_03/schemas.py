@@ -3,8 +3,8 @@ from pydantic import BaseModel, Field
 
 class PongBase(BaseModel):
     message: str = Field(
-        example="Pong",
-        default="Pong"
+        example="pong",
+        default="pong"
     )
 
 
