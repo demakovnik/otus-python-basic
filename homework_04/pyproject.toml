@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "homework-04"
+version = "0.1.0"
+description = ""
+authors = ["Nikita Demakov <demakoffnik@gmail.com>"]
+readme = "README.md"
+packages = [{include = "homework_04"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiohttp = "^3.8.5"
+sqlalchemy = ">=1.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
