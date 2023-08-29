@@ -22,8 +22,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 async def get_users():
     return await jsonplaceholder_requests.fetch_api(jsonplaceholder_requests.USERS_DATA_URL)
 
+
 async def get_posts():
     return await jsonplaceholder_requests.fetch_api(jsonplaceholder_requests.POSTS_DATA_URL)
+
 
 async def create_users(
         session: AsyncSession,
@@ -32,17 +34,18 @@ async def create_users(
     result: list[User] = []
     for user in users:
         created_user = User(id=user['id'],
-                    name=user['name'],
-                    username=user['username'],
-                    email=user['email'],
-                    address=user['address'],
-                    phone=user['phone'],
-                    website=user['website'],
-                    company=user['company'])
+                            name=user['name'],
+                            username=user['username'],
+                            email=user['email'],
+                            address=user['address'],
+                            phone=user['phone'],
+                            website=user['website'],
+                            company=user['company'])
         result.append(created_user)
         session.add(created_user)
     await session.commit()
     return result
+
 
 async def create_posts(
         session: AsyncSession,
@@ -51,14 +54,13 @@ async def create_posts(
     result: list[Post] = []
     for post in posts:
         created_post = Post(id=post['id'],
-                    title=post['title'],
-                    body=post['body'],
-                    user_id=post['userId'],)
+                            title=post['title'],
+                            body=post['body'],
+                            user_id=post['userId'], )
         result.append(created_post)
         session.add(created_post)
     await session.commit()
     return result
-
 
 
 async def async_main():
@@ -69,11 +71,8 @@ async def async_main():
     return await gather(*tasks)
 
 
-
 def main():
     users_data, posts_data = run(async_main())
-
-
 
     print(users_data)
     print(posts_data)
