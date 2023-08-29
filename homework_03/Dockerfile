@@ -1,4 +1,5 @@
-FROM python:3.9
+FROM python:3.9-bullseye
+
 WORKDIR /app
 
 RUN pip install --upgrade pip setuptools "poetry==1.5.1"
