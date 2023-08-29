@@ -29,6 +29,7 @@ async def create_users(
         session: AsyncSession,
         users: list[dict],
 ) -> list[User]:
+    result: list[User] = []
     for user in users:
         created_user = User(id=user['id'],
                     name=user['name'],
@@ -38,22 +39,25 @@ async def create_users(
                     phone=user['phone'],
                     website=user['website'],
                     company=user['company'])
+        result.append(created_user)
         session.add(created_user)
     await session.commit()
-    return users
+    return result
 
 async def create_posts(
         session: AsyncSession,
         posts: list[dict],
 ) -> list[Post]:
+    result: list[Post] = []
     for post in posts:
         created_post = Post(id=post['id'],
                     title=post['title'],
                     body=post['body'],
                     user_id=post['userId'],)
+        result.append(created_post)
         session.add(created_post)
     await session.commit()
-    return posts
+    return result
 
 
 
@@ -62,12 +66,17 @@ async def async_main():
     users = await get_users()
     posts = await get_posts()
     tasks = [create_users(session=Session(), users=users), create_posts(session=Session(), posts=posts)]
-    await gather(*tasks)
+    return await gather(*tasks)
 
 
 
 def main():
-    run(async_main())
+    users_data, posts_data = run(async_main())
+
+
+
+    print(users_data)
+    print(posts_data)
 
 
 if __name__ == "__main__":
