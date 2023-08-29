@@ -9,7 +9,8 @@ packages = [{include = "homework_04"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 aiohttp = "^3.8.5"
-sqlalchemy = ">=1.4"
+sqlalchemy = {version = ">=1.4", extras = ["asyncio"]}
+asyncpg = "^0.28.0"
 
 
 [build-system]
