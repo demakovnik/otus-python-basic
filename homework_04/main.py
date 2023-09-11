@@ -74,9 +74,5 @@ async def async_main():
 def main():
     users_data, posts_data = run(async_main())
 
-    print(users_data)
-    print(posts_data)
-
-
 if __name__ == "__main__":
     main()
